@@ -1,4 +1,4 @@
-use crate::Paddle;
+use crate::BasePaddle;
 use macroquad::color::GREEN;
 use macroquad::math::clamp;
 use macroquad::prelude::{draw_circle, screen_height, screen_width};
@@ -82,10 +82,12 @@ impl Ball {
         }
     }
 
-    pub fn overlaps_with_paddle(&self, paddle: &Paddle) -> bool {
+    pub fn overlaps_with_paddle(&self, paddle: &dyn BasePaddle) -> bool {
         // Checks if the ball overlaps with a paddle.
         // Finds closet point on paddle to ball then calculates distance
         // using pythagoras and compares to ball radius.
+        // Ball shouldn't depend on Paddle here. This method should be moved to a separate
+        // module that manages physics/collisions between different objects.
         let paddle_closest_x = clamp(self.x, paddle.left_side(), paddle.right_side());
         let paddle_closest_y = clamp(self.y, paddle.top_side(), paddle.bottom_side());
 
