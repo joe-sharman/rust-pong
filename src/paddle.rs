@@ -35,6 +35,10 @@ pub trait BasePaddle {
     fn move_down(&mut self);
 
     fn stop(&mut self);
+
+    fn centre_y(&self) -> f32 {
+        self.y() + (self.length() / 2.0)
+    }
 }
 
 #[derive(Clone, Debug)]
@@ -46,7 +50,7 @@ struct Paddle {
 impl Paddle {
     const LENGTH: f32 = 100.0;
     const THICKNESS: f32 = 15.0;
-    const SPEED: f32 = 8.0;
+    const SPEED: f32 = 5.0;
     pub fn new(x: f32, y: f32) -> Self {
         Paddle { x, y }
     }

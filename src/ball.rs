@@ -1,4 +1,4 @@
-use crate::BasePaddle;
+use crate::paddle::{BasePaddle};
 use macroquad::color::GREEN;
 use macroquad::math::clamp;
 use macroquad::prelude::{draw_circle, screen_height, screen_width};
@@ -14,8 +14,8 @@ pub enum BounceDirection {
     Right,
 }
 pub struct Ball {
-    x: f32,
-    y: f32,
+    pub x: f32,
+    pub y: f32,
     velocity_x: f32,
     velocity_y: f32,
 }
